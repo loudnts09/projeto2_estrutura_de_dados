@@ -21,5 +21,13 @@ void inserir_concurso(Tabela * tabela, Concurso concurso){
     while(tabela->tabela[indice] != NULL && tabela->tabela[indice]-> numero != concurso.numero){
         indice = (indice + 1) % TAMANHO_TABELA;
     }
-    
+    if(tabela->tabela[indice] != NULL){
+        printf("Concurso %d já existe!\n", concurso.numero);
+    }
+    else{
+        tabela->tabela[indice] = (Concurso*) malloc(sizeof(Concurso));
+        * tabela->tabela[indice] = concurso;
+        printf("Concurso %d inserido com sucesso!\n", concurso.numero);
+    }
 }
+
